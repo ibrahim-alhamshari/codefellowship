@@ -17,6 +17,11 @@ public class ApplicationController {
     }
 
 
+    @GetMapping("/login")
+    public String logInPage(){
+        return "templete.html";
+    }
+
     @GetMapping("/test")
     public String testTemplete (Model model){
         model.addAttribute("Name" , "Ibrahim");
