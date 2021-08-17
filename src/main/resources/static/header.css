@@ -1,0 +1,11 @@
+header {
+  font-size: 20px;
+  background: #797070;
+  padding: 1%;
+}
+
+header a {
+  margin: 2%;
+  background-color: #f88d8d;
+  padding: 0.5%;
+}

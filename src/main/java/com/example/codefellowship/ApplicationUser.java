@@ -18,7 +18,7 @@ public class ApplicationUser implements UserDetails {
 
     @Column(unique = true)
     private String username;
-    private int password;
+    private String password;
     private String firstName;
     private String lastName;
     private int dateOfBirth;
@@ -26,7 +26,7 @@ public class ApplicationUser implements UserDetails {
 
     public ApplicationUser(){}
 
-    public ApplicationUser(String username, int password,String firstName, String lastName,int dateOfBirth, String bio ){
+    public ApplicationUser(String bio ,int dateOfBirth, String firstName, String lastName, String password, String username ){
         this.username =username;
         this.password =password;
         this.firstName= firstName;
@@ -36,15 +36,50 @@ public class ApplicationUser implements UserDetails {
     }
 
     public void setId(int id) {
+
         this.id = id;
     }
 
     public void setUsername(String username) {
+
         this.username = username;
     }
 
-    public void setPassword(int password) {
+    public void setPassword(String password) {
+
         this.password = password;
+    }
+
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
+
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
+
+    public void setDateOfBirth(int dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public void setBio(String bio) {
+        this.bio = bio;
+    }
+
+    public String getFirstName() {
+        return firstName;
+    }
+
+    public String getLastName() {
+        return lastName;
+    }
+
+    public int getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public String getBio() {
+        return bio;
     }
 
     @Override
@@ -54,12 +89,12 @@ public class ApplicationUser implements UserDetails {
 
     @Override
     public String getPassword() {
-        return null;
+        return password;
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return username;
     }
 
     @Override
