@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragment :: head"></head>
+<body>
+<form action="/saveUser" method="POST">
+  <input type="text" placeholder="username" name="username" required>
+  <input type="password" placeholder="password" name="password" required>
+  <input type="text" placeholder="firstName" name="firstName" required>
+  <input type="text" placeholder="lastName" name="lastName" required>
+  <input type="number" placeholder="dateOfBirth" name="dateOfBirth" required>
+  <input type="text" placeholder="bio" name="bio" required>
+  <input type="submit" name="submit">
+</form>
+</body>
+</html>

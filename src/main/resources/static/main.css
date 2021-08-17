@@ -1,0 +1,18 @@
+body{
+    
+    background: rgb(2,0,36);
+    background: linear-gradient(90deg, rgba(2,0,36,1) 0%, rgba(9,113,121,0.6) 0%, rgb(224, 173, 158) 100%);
+    }
+
+
+main{
+    text-align: center;
+}
+main h3{
+    font-size: 20px;
+}
+img{
+margin-top:1%;
+width:20%
+radius: 50px;
+}
