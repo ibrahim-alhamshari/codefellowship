@@ -1,6 +1,6 @@
 package com.example.codefellowship.appSecurity;
 
-import com.example.codefellowship.ApplicationUser;
+import com.example.codefellowship.entities.ApplicationUser;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;

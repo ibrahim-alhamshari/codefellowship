@@ -14,5 +14,15 @@ main h3{
 img{
 margin-top:1%;
 width:20%
-radius: 50px;
+}
+
+div form{
+    text-align: left;
+}
+
+#bodyPost{
+    text-align: left;
+    width: 20%;
+    height: 30px;
+    text-align: left;
 }
