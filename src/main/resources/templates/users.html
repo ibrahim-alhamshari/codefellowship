@@ -5,6 +5,8 @@
     <title>Title</title>
 </head>
 <body>
+<header th:replace="fragment :: header"></header>
+
 <main>
     <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTLg7YYue_VyRsQLCwmguYP8nSLBwe24G8WgqJr8i_YxHwyHXbn9wqkZXAwdAvSGF9kVMk&usqp=CAU" alt="Profile image" sizes="max-height: 50px"/>
     <h3>User name: <span th:text="${usersById.username}"></span></h3>

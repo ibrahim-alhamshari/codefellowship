@@ -2,10 +2,38 @@
 <html lang="en">
 <head th:replace="fragment :: head"></head>
 <body>
-<header th:replace="fragment :: header"></header>
+
+<header th:if="${ifCondition}">
+    <a href="/">Home</a>
+    <a href="signUp">Sign Up</a>
+    <a href="login">Sign in</a>
+    <a href="profile">Profile</a>
+</header>
+<header th:if="${ifCondition2}">
+    <a href="signUp">Sign Up</a>
+    <a href="login">Sign in</a>
+</header>
 <main>
-    <h2> Welcome to codefellows page</h2>
+    <h2 th:text="${principalUser}"></h2>
+    <h3>Codefellows page</h3>
     <img src="https://th.bing.com/th/id/R.48151af63600b01a0b06aa31da63933a?rik=NC7UdvHrxmw%2bsA&riu=http%3a%2f%2fcdn.geekwire.com%2fwp-content%2fuploads%2f2014%2f04%2fCode-Fellows-logo.jpg&ehk=JjZb4gcr8R9kbh3eq0CL%2f2rmnEogd0hj3c%2fIXT%2bXctM%3d&risl=&pid=ImgRaw&r=0" alt="codefellows"/>
+
+    <div th:if="${ifCondition}">
+    <form th:action="@{/addPost}" method="post">
+        <input id="bodyPost" type="text" name="body" placeholder="post" required>
+        <input type="submit" name="post">
+    </form>
+    </div>
+
 </main>
 </body>
 </html>
+
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head th:replace="fragment :: head"></head>-->
+<!--<body>-->
+<!--<h1>Error, Some thing went wrong!!</h1>-->
+<!--<h2><span th:text="${signUpErrors}"></span></h2>-->
+<!--</body>-->
+<!--</html>-->
