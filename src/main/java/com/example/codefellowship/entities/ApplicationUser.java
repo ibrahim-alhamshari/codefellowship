@@ -5,7 +5,9 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.util.Collection;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.*;
 
@@ -28,8 +30,14 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(mappedBy = "user")
     public List<Post> postList;
 
-//    @ManyToMany
-//    private List<ApplicationUser> usersManyToMany;
+    @ManyToMany(cascade = {CascadeType.ALL})
+    @JoinTable(name = "user_follower",
+    joinColumns = {@JoinColumn(name = "user1_id")},
+    inverseJoinColumns = {@JoinColumn(name = "follower_id")})
+    private Set<ApplicationUser> usersManyToMany = new HashSet<ApplicationUser>();
+
+    @ManyToMany(mappedBy = "usersManyToMany")
+    private Set<ApplicationUser> follower= new HashSet<ApplicationUser>();
 
     public ApplicationUser(){}
 
@@ -43,14 +51,30 @@ public class ApplicationUser implements UserDetails {
     }
 
 
+    public int getId() {
+        return id;
+    }
 
-//    public List<ApplicationUser> getUsersManyToMany() {
-//        return usersManyToMany;
-//    }
-//
-//    public void setUsersManyToMany(List<ApplicationUser> usersManyToMany) {
-//        this.usersManyToMany = usersManyToMany;
-//    }
+    public void addNewFollowed(ApplicationUser user){
+        usersManyToMany.add(user);
+    }
+
+
+    public Set<ApplicationUser> getFollower() {
+        return follower;
+    }
+
+    public void setFollower(Set<ApplicationUser> follower) {
+        this.follower = follower;
+    }
+
+    public Set<ApplicationUser> getUsersManyToMany() {
+        return usersManyToMany;
+    }
+
+    public void setUsersManyToMany(Set<ApplicationUser> usersManyToMany) {
+        this.usersManyToMany = usersManyToMany;
+    }
 
     public List<Post> getPostList() {
         return postList;
@@ -61,7 +85,6 @@ public class ApplicationUser implements UserDetails {
     }
 
     public void setId(int id) {
-
         this.id = id;
     }
 
