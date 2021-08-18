@@ -98,7 +98,7 @@ public class ApplicationController {
 
         if(user.getUsername() == user1.getUsername()){
             model.addAttribute("userData" , applicationUserRepo.findByUsername(user1.getUsername()));
-            return "profile.html";
+            return "users.html";
         }else {
         model.addAttribute("userData" , user);
         System.out.println(user);
@@ -107,7 +107,7 @@ public class ApplicationController {
             model.addAttribute("signUpErrors" , "In correct Id");
             System.out.println("error==========");
         }
-        return "profile.html";
+        return "users.html";
     }
 
 }
