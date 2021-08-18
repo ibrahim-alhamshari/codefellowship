@@ -28,8 +28,8 @@ public class ApplicationUser implements UserDetails {
     @OneToMany(mappedBy = "user")
     public List<Post> postList;
 
-    @ManyToMany
-    private List<ApplicationUser> usersManyToMany;
+//    @ManyToMany
+//    private List<ApplicationUser> usersManyToMany;
 
     public ApplicationUser(){}
 
@@ -42,13 +42,15 @@ public class ApplicationUser implements UserDetails {
         this.bio= bio;
     }
 
-    public List<ApplicationUser> getUsersManyToMany() {
-        return usersManyToMany;
-    }
 
-    public void setUsersManyToMany(List<ApplicationUser> usersManyToMany) {
-        this.usersManyToMany = usersManyToMany;
-    }
+
+//    public List<ApplicationUser> getUsersManyToMany() {
+//        return usersManyToMany;
+//    }
+//
+//    public void setUsersManyToMany(List<ApplicationUser> usersManyToMany) {
+//        this.usersManyToMany = usersManyToMany;
+//    }
 
     public List<Post> getPostList() {
         return postList;
