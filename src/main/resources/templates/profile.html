@@ -16,7 +16,7 @@
         <h3>Bio: <span th:text="${userData.bio}"></span></h3>
         <hr>
     </div>
-    <div th:each="Post: ${allPosts}">
+    <div th:each="Post: ${userPosts}">
         <h2 th:text="${Post.createdAt}"></h2>
         <h2 th:text="${Post.body}"></h2>
         <hr>

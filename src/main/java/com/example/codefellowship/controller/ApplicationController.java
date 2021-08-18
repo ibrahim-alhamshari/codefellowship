@@ -82,9 +82,10 @@ public class ApplicationController {
 
     @GetMapping("/profile")
     public String getProfile(Principal principal,Model model){
+        ApplicationUser user = applicationUserRepo.findByUsername(principal.getName());
         model.addAttribute("principalUser" , ("Welcome "+principal.getName()));
         model.addAttribute("userData" , applicationUserRepo.findByUsername(principal.getName()));
-        model.addAttribute("allPosts" , postRepo.findAll());
+        model.addAttribute("userPosts" , postRepo.findByUser(user));
         return "profile.html";
     }
 
