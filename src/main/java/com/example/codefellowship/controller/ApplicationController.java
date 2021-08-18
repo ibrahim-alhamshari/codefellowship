@@ -1,6 +1,7 @@
 package com.example.codefellowship.controller;
 
 import com.example.codefellowship.entities.ApplicationUser;
+import com.example.codefellowship.entities.Post;
 import com.example.codefellowship.repository.ApplicationUserRepo;
 import com.example.codefellowship.repository.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,6 +11,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.view.RedirectView;
 
+import java.awt.*;
 import java.security.Principal;
 
 
@@ -84,8 +86,13 @@ public class ApplicationController {
     public String getProfile(Principal principal,Model model){
         ApplicationUser user = applicationUserRepo.findByUsername(principal.getName());
         model.addAttribute("principalUser" , ("Welcome "+principal.getName()));
+        ApplicationUser user1 = applicationUserRepo.findByUsername(principal.getName());
+
         model.addAttribute("userData" , applicationUserRepo.findByUsername(principal.getName()));
-        model.addAttribute("userPosts" , postRepo.findByUser(user));
+        System.out.println(user.getUsername()+"  +++++++++++++++++++++++++++");
+
+        model.addAttribute("userPosts" ,user.getPostList());
+
         return "profile.html";
     }
 
@@ -110,5 +117,25 @@ public class ApplicationController {
         }
         return "users.html";
     }
+
+    @GetMapping("/allUsers")
+    public String getAllUsers(Principal principal , Model model){
+        Iterable user = applicationUserRepo.findAll();
+        model.addAttribute("allUsers" , user);
+        return "allUsers.html";
+    }
+
+    @PostMapping("/follow/{id}")
+    public RedirectView addFollow(@PathVariable("id") int id , Principal principal , Model model){
+
+        System.out.println(id+ " ========================================");
+        ApplicationUser user = applicationUserRepo.findByUsername(principal.getName());
+        ApplicationUser followed = applicationUserRepo.findById(id).get();
+        user.addNewFollowed(followed);
+        applicationUserRepo.save(user);
+        return new RedirectView("/allUsers");
+    }
+
+
 
 }

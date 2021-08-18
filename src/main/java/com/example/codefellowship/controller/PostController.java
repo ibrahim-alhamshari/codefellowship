@@ -6,6 +6,8 @@ import com.example.codefellowship.repository.ApplicationUserRepo;
 import com.example.codefellowship.repository.PostRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.servlet.view.RedirectView;
@@ -32,4 +34,15 @@ public class PostController {
         postRepo.save(post);
         return new RedirectView("/profile");
     }
+
+    @GetMapping("/feed")
+    public String getPosts(Principal principal , Model model){
+    ApplicationUser user = applicationUserRepo.findByUsername(principal.getName());
+        model.addAttribute("followers" , user.getUsersManyToMany());
+        return "feed.html";
+    }
+
+
+
+
 }

@@ -8,3 +8,6 @@
 4. `/saveUser`: This route to pass the values you entered in the **signUp** page to save them in the database.
 5. `/profile`: This will take the users to their profiles.(It's allowd if you logedIn only).
 6. `/users/{id}`: You have to enter an index of a user and it will show you information about that user.
+7. `/allUsers`: You will see all the users who are regestering in the application.
+8. `/follow/{id}`: This route to add a new followers.
+9. `/feed`: to see all the posts from the people those you followed them. 

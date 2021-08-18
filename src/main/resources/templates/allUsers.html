@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragment :: head"></head>
+
+<body>
+<header th:replace="fragment :: header"></header>
+<main>
+
+    <div th:each="singleUser: ${followers}">
+        <div th:if="${singleUser.getPostList().size() != 0}" th:each="post: ${singleUser.getPostList()}">
+            <h2  th:text="${singleUser.username}" ></h2>
+            <h2 th:text="${post.createdAt}"></h2>
+            <h2 th:text="${post.body}"></h2>
+            <hr>
+        </div>
+    </div>
+
+<!--    th:if="${followers.username != Users.username}"-->
+
+  <div th:each="Users: ${allUsers}">
+      <h3>User name: <span th:text="${Users.username}"></span></h3>
+      <h3>date Of Birth: <span th:text="${Users.dateOfBirth}"></span></h3>
+      <h3>Bio: <span th:text="${Users.bio}"></span></h3>
+      <form th:action="@{/follow/{id}(id=${Users.id})}" name="id" method="post">
+      <button>Follow</button>
+      </form>
+      <hr>
+  </div>
+
+
+</main>
+<footer>
+
+</footer>
+</body>
+</html>

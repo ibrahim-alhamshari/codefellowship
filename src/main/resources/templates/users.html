@@ -1,9 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
+<head th:replace="fragment :: head"></head>
+
 <body>
 <header th:replace="fragment :: header"></header>
 
@@ -12,7 +10,6 @@
     <h3>User name: <span th:text="${userData.username}"></span></h3>
     <h3>date of birth: <span th:text="${userData.dateOfBirth}"></span></h3>
     <h3>Bio: <span th:text="${userData.bio}"></span></h3>
-    <button>Follow</button>
 </main>
 </body>
 </html>

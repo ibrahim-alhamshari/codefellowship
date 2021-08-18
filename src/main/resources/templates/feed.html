@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head th:replace="fragment :: head"></head>
+
+<body>
+<header th:replace="fragment :: header"></header>
+
+<div th:each="singleUser: ${followers}">
+
+    <div th:if="${singleUser.getPostList().size() != 0}" th:each="post: ${singleUser.getPostList()}">
+        <h2  th:text="${singleUser.username}" ></h2>
+  <h2 th:text="${post.createdAt}"></h2>
+  <h2 th:text="${post.body}"></h2>
+  <hr>
+    </div>
+</div>
+</body>
+</html>
